@@ -1,24 +1,28 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* Azul-teal Energisa */
+  --color-en-primary:       #009FC2;
+  --color-en-primary-hover: #007fa0;
+  --color-en-primary-mid:   #66c3d9;
+  --color-en-primary-light: #e0f5fb;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  /* Verde-lima Energisa */
+  --color-en-secondary:       #C2CD23;
+  --color-en-secondary-hover: #a3ae1c;
+  --color-en-secondary-mid:   #d8e27a;
+  --color-en-secondary-light: #f4f6d3;
+
+  /* Neutros */
+  --color-en-dark:   #3C3C3B;
+  --color-en-dark-2: #5C5C5B;
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background: var(--color-background);
-  color: var(--color-foreground);
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
+  background: #ffffff;
+  color: #3C3C3B;
   font-family: Arial, Helvetica, sans-serif;
 }

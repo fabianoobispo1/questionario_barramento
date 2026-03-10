@@ -13,7 +13,7 @@ export default function CampoFormulario({ pergunta, respostas, onChange, erro }:
   const valor = respostas[pergunta.id];
 
   const inputBase =
-    'w-full rounded-lg border bg-white px-3 py-2 text-sm shadow-sm transition focus:outline-none focus:ring-2 focus:ring-blue-500';
+    'w-full rounded-lg border bg-white px-3 py-2 text-sm shadow-sm transition focus:outline-none focus:ring-2 focus:ring-en-primary';
   const inputNormal = `${inputBase} border-gray-300`;
   const inputErro = `${inputBase} border-red-400 focus:ring-red-400`;
   const classeInput = erro ? inputErro : inputNormal;
@@ -29,9 +29,9 @@ export default function CampoFormulario({ pergunta, respostas, onChange, erro }:
               value={opcao}
               checked={valor === opcao}
               onChange={() => onChange(pergunta.id, opcao)}
-              className="h-4 w-4 accent-blue-600"
+              className="h-4 w-4 accent-en-primary"
             />
-            <span className="text-sm text-gray-700 group-hover:text-blue-700">{opcao}</span>
+            <span className="text-sm text-gray-700 group-hover:text-en-primary group-hover:font-medium">{opcao}</span>
           </label>
         ))}
         {erro && <p className="text-xs text-red-500 mt-1">{erro}</p>}
@@ -55,9 +55,9 @@ export default function CampoFormulario({ pergunta, respostas, onChange, erro }:
               type="checkbox"
               checked={selecionados.includes(opcao)}
               onChange={() => toggle(opcao)}
-              className="h-4 w-4 rounded accent-blue-600"
+              className="h-4 w-4 rounded accent-en-primary"
             />
-            <span className="text-sm text-gray-700 group-hover:text-blue-700">{opcao}</span>
+            <span className="text-sm text-gray-700 group-hover:text-en-primary group-hover:font-medium">{opcao}</span>
           </label>
         ))}
         {erro && <p className="text-xs text-red-500 mt-1">{erro}</p>}
