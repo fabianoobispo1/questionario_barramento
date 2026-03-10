@@ -11,8 +11,7 @@ import {
   FileCode2,
   FileSpreadsheet,
   FileText,
-  Loader2,
-  Zap,
+  Loader2
 } from 'lucide-react';
 
 type Erros = Record<string, string>;
