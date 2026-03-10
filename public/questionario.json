@@ -1,0 +1,492 @@
+{
+  "titulo": "Questionário de Onboarding - Barramento de Integração",
+  "descricao": "Preencha todas as informações necessárias para integração com o barramento Kafka.",
+  "secoes": [
+    {
+      "id": "identificacao",
+      "titulo": "1. Identificação do Projeto",
+      "perguntas": [
+        {
+          "id": "nome_projeto",
+          "label": "Nome do Projeto / Sistema",
+          "tipo": "text",
+          "obrigatorio": true,
+          "placeholder": "Ex.: Demanda Ren1.137 - Consulta Pública 32"
+        },
+        {
+          "id": "area_time",
+          "label": "Área / Time Responsável",
+          "tipo": "text",
+          "obrigatorio": true,
+          "placeholder": "Ex.: TECCOM/Canais Digitais"
+        },
+        {
+          "id": "contato_tecnico",
+          "label": "Contato Técnico (nome + e-mail)",
+          "tipo": "textarea",
+          "obrigatorio": true,
+          "placeholder": "Ex.: João Silva - joao.silva@energisa.com.br"
+        },
+        {
+          "id": "previsao_inicio",
+          "label": "Previsão de início",
+          "tipo": "date",
+          "obrigatorio": true,
+          "placeholder": ""
+        },
+        {
+          "id": "ambientes",
+          "label": "Ambientes necessários",
+          "tipo": "checkbox-group",
+          "obrigatorio": true,
+          "opcoes": ["DEV", "HML", "PRD"]
+        }
+      ]
+    },
+    {
+      "id": "origens_tipo",
+      "titulo": "2.1 Tipo de Origem",
+      "perguntas": [
+        {
+          "id": "tipo_origem",
+          "label": "Qual(is) o(s) tipo(s) de origem?",
+          "tipo": "checkbox-group",
+          "obrigatorio": true,
+          "opcoes": ["Tabela", "View", "API", "Tópicos Kafka", "Outro"]
+        },
+        {
+          "id": "bancos_envolvidos",
+          "label": "Quantos bancos de dados estão envolvidos? Liste-os (nome, tipo: Oracle/SQL Server/outro)",
+          "tipo": "textarea",
+          "obrigatorio": true,
+          "placeholder": "Ex.: 2 bancos — Oracle (producao_db), SQL Server (legado_db)"
+        },
+        {
+          "id": "tabelas_views",
+          "label": "Quantas tabelas/views serão integradas? Liste-as",
+          "tipo": "textarea",
+          "obrigatorio": true,
+          "placeholder": "Ex.: ntle_clien_itrpc_frnto_muncp\ngold_adlcorp_hmg.dm_local"
+        }
+      ]
+    },
+    {
+      "id": "origens_banco",
+      "titulo": "2.2 Para origens em Banco de Dados (tabelas/views)",
+      "perguntas": [
+        {
+          "id": "possui_pk",
+          "label": "As tabelas possuem Primary Key (PK)?",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["Sim", "Não", "Algumas sim, outras não"]
+        },
+        {
+          "id": "possui_unique_index",
+          "label": "Se não há PK, existe Alternate Unique Index?",
+          "tipo": "radio",
+          "obrigatorio": false,
+          "opcoes": ["Sim", "Não", "Não aplicável"]
+        },
+        {
+          "id": "campo_timestamp",
+          "label": "Se não há PK nem Unique Index, existe campo equivalente + Timestamp de atualização?",
+          "tipo": "radio",
+          "obrigatorio": false,
+          "opcoes": ["Sim", "Não", "Não aplicável"]
+        },
+        {
+          "id": "view_pk_timestamp",
+          "label": "As views possuem PK (ou equivalente) + Timestamp?",
+          "tipo": "radio",
+          "obrigatorio": false,
+          "opcoes": ["Sim", "Não", "Não aplicável"]
+        },
+        {
+          "id": "volumetria_tabelas",
+          "label": "Para cada tabela/view, qual a volumetria diária esperada de movimentação? (em Bytes: Kb, Mb ou Gb)",
+          "tipo": "textarea",
+          "obrigatorio": true,
+          "placeholder": "Ex.: tabela_a: 30 MB/dia, tabela_b: 5 GB/dia"
+        }
+      ]
+    },
+    {
+      "id": "origens_api",
+      "titulo": "2.3 Para origens via API / Serviço",
+      "perguntas": [
+        {
+          "id": "formato_mensagens_api",
+          "label": "Qual o formato das mensagens?",
+          "tipo": "radio",
+          "obrigatorio": false,
+          "opcoes": ["JSON", "Avro", "Protobuf", "XML", "Outro"]
+        },
+        {
+          "id": "schema_definido_api",
+          "label": "Existe schema definido? Pode ser compartilhado?",
+          "tipo": "textarea",
+          "obrigatorio": false,
+          "placeholder": "Descreva onde o schema está disponível ou compartilhe-o"
+        },
+        {
+          "id": "volumetria_api",
+          "label": "Para cada estrutura de dados, qual a volumetria diária esperada? (em Bytes)",
+          "tipo": "text",
+          "obrigatorio": false,
+          "placeholder": "Ex.: 30 MB/dia por endpoint"
+        }
+      ]
+    },
+    {
+      "id": "origens_kafka",
+      "titulo": "2.4 Para origens via Tópico Kafka (consumo de tópico existente)",
+      "perguntas": [
+        {
+          "id": "topicos_origem",
+          "label": "Qual(is) o(s) nome(s) do(s) tópico(s) de origem?",
+          "tipo": "textarea",
+          "obrigatorio": false,
+          "placeholder": "Ex.: crm_clientes_afetados_desligamento\nwfm_coordenada_equipe"
+        },
+        {
+          "id": "topico_existente",
+          "label": "O tópico já existe no barramento ou será criado?",
+          "tipo": "radio",
+          "obrigatorio": false,
+          "opcoes": ["Já existente", "Será criado", "Misto"]
+        },
+        {
+          "id": "formato_mensagens_kafka",
+          "label": "Qual o formato das mensagens no tópico?",
+          "tipo": "radio",
+          "obrigatorio": false,
+          "opcoes": ["JSON", "Avro", "Protobuf", "Outro"]
+        },
+        {
+          "id": "schema_registry",
+          "label": "O tópico utiliza Schema Registry?",
+          "tipo": "radio",
+          "obrigatorio": false,
+          "opcoes": ["Sim", "Não"]
+        },
+        {
+          "id": "consumer_group",
+          "label": "Qual o consumer group que será utilizado?",
+          "tipo": "text",
+          "obrigatorio": false,
+          "placeholder": "Ex.: cg-sistema-nome"
+        },
+        {
+          "id": "offset_leitura",
+          "label": "A leitura será desde o início (earliest) ou somente mensagens novas (latest)?",
+          "tipo": "radio",
+          "obrigatorio": false,
+          "opcoes": ["Earliest (desde o início)", "Latest (somente novas)"]
+        },
+        {
+          "id": "volumetria_kafka_origem",
+          "label": "Qual a volumetria diária estimada que será consumida desse tópico? (em Bytes)",
+          "tipo": "text",
+          "obrigatorio": false,
+          "placeholder": "Ex.: 30 MB/dia"
+        },
+        {
+          "id": "ordenacao_kafka_origem",
+          "label": "Há dependência de ordenação das mensagens (partição específica)?",
+          "tipo": "radio",
+          "obrigatorio": false,
+          "opcoes": ["Sim", "Não"]
+        }
+      ]
+    },
+    {
+      "id": "destinos",
+      "titulo": "3. Destinos dos Dados",
+      "perguntas": [
+        {
+          "id": "tipo_destino",
+          "label": "Qual(is) o(s) tipo(s) de destino?",
+          "tipo": "checkbox-group",
+          "obrigatorio": true,
+          "opcoes": ["Tabela", "API", "Serviço", "Data Lake", "Tópico Kafka", "Outro"]
+        },
+        {
+          "id": "sistemas_destino",
+          "label": "Liste os sistemas/bancos de destino",
+          "tipo": "textarea",
+          "obrigatorio": false,
+          "placeholder": "Ex.: Sistema X (Oracle), API Y (REST)"
+        },
+        {
+          "id": "pull_push",
+          "label": "O destino consome ativamente (pull) ou o Kafka empurra (push/sink connector)?",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["Pull (o destino consome)", "Push (sink connector)", "Ambos"]
+        }
+      ]
+    },
+    {
+      "id": "topicos_particionamento",
+      "titulo": "3.1 Criação de Tópicos e Particionamento",
+      "descricao": "As respostas abaixo são essenciais para definir o número de partições correto. Regra geral: o número de partições determina o paralelismo máximo de consumo.",
+      "perguntas": [
+        {
+          "id": "nomes_topicos_novos",
+          "label": "Quantos tópicos precisarão ser criados? Liste os nomes sugeridos",
+          "tipo": "textarea",
+          "obrigatorio": true,
+          "placeholder": "Ex.: crm_clientes_afetados_desligamento_emergencial_de_mais_empresas"
+        },
+        {
+          "id": "consumidores_distintos",
+          "label": "Quantos microsserviços/consumidores distintos irão consumir cada tópico?",
+          "tipo": "text",
+          "obrigatorio": true,
+          "placeholder": "Ex.: 2 microsserviços — MSCOMFECLI, MSOUTRO"
+        },
+        {
+          "id": "consumer_group_tipo",
+          "label": "Esses consumidores fazem parte do mesmo consumer group (concorrência) ou de groups diferentes (broadcast)?",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["Mesmo consumer group (concorrência)", "Groups diferentes (broadcast)", "Ambos"]
+        },
+        {
+          "id": "instancias_paralelas",
+          "label": "Quantas instâncias paralelas cada microsserviço poderá ter em execução simultaneamente? (define o mínimo de partições necessárias)",
+          "tipo": "number",
+          "obrigatorio": true,
+          "placeholder": "Ex.: 4"
+        },
+        {
+          "id": "ordem_garantida",
+          "label": "A ordem das mensagens precisa ser garantida?",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["Sim", "Não"]
+        },
+        {
+          "id": "chave_mensagens",
+          "label": "Qual será a chave (key) das mensagens? (ex.: ID do cliente, ID do contrato)",
+          "tipo": "text",
+          "obrigatorio": true,
+          "placeholder": "Ex.: Número da UC, ID do Contrato"
+        },
+        {
+          "id": "previsao_aumento_consumidores",
+          "label": "Existe previsão de aumento de consumidores no futuro?",
+          "tipo": "radio",
+          "obrigatorio": false,
+          "opcoes": ["Sim", "Não"]
+        },
+        {
+          "id": "retencao_topico",
+          "label": "Qual o tempo de retenção necessário para as mensagens nesse tópico?",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["7 dias", "15 dias", "30 dias", "60 dias", "90 dias", "Compactação infinita", "Outro"]
+        },
+        {
+          "id": "log_compaction",
+          "label": "O tópico precisa de compactação (log compaction) — manter apenas o último valor por chave?",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["Sim", "Não"]
+        }
+      ]
+    },
+    {
+      "id": "transformacoes",
+      "titulo": "4. Transformações",
+      "perguntas": [
+        {
+          "id": "ha_transformacao",
+          "label": "Haverá transformação de dados?",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["Sim", "Não"]
+        },
+        {
+          "id": "tipo_transformacao",
+          "label": "Se sim, qual o tipo?",
+          "tipo": "checkbox-group",
+          "obrigatorio": false,
+          "opcoes": ["Enriquecimento", "Filtragem", "Agregação", "Junção (join)", "Conversão de formato", "Outro"]
+        },
+        {
+          "id": "onde_transformacao",
+          "label": "A transformação será feita dentro do Kafka (ksqlDB/SMT) ou fora (serviço externo)?",
+          "tipo": "radio",
+          "obrigatorio": false,
+          "opcoes": ["Dentro do Kafka (ksqlDB/SMT)", "Fora do Kafka (serviço externo)", "Ambos"]
+        },
+        {
+          "id": "duplica_volumetria",
+          "label": "Se fora do Kafka: o fluxo será 'ler tópico original → transformar → gravar em novo tópico'? (isso duplica volumetria)",
+          "tipo": "radio",
+          "obrigatorio": false,
+          "opcoes": ["Sim", "Não", "Não aplicável"]
+        },
+        {
+          "id": "volumetria_pos_transformacao",
+          "label": "Qual a volumetria final esperada após transformação? (em Bytes/dia)",
+          "tipo": "text",
+          "obrigatorio": false,
+          "placeholder": "Ex.: 60 MB/dia por tabela"
+        }
+      ]
+    },
+    {
+      "id": "carga_inicial",
+      "titulo": "5. Carga Inicial (Dados Históricos)",
+      "perguntas": [
+        {
+          "id": "necessidade_carga_inicial",
+          "label": "Existe necessidade de carga inicial com dados históricos?",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["Sim", "Não"]
+        },
+        {
+          "id": "volume_carga_inicial",
+          "label": "Se sim, qual o volume total estimado? (em Bytes: Mb, Gb, Tb)",
+          "tipo": "text",
+          "obrigatorio": false,
+          "placeholder": "Ex.: 500 GB"
+        },
+        {
+          "id": "periodo_historico",
+          "label": "Qual o período histórico a ser carregado?",
+          "tipo": "text",
+          "obrigatorio": false,
+          "placeholder": "Ex.: últimos 2 anos"
+        },
+        {
+          "id": "janela_carga",
+          "label": "Há janela de tempo disponível para a carga inicial? (ex.: fora do horário de pico)",
+          "tipo": "text",
+          "obrigatorio": false,
+          "placeholder": "Ex.: madrugada das 00h às 05h"
+        }
+      ]
+    },
+    {
+      "id": "volumetria_sazonalidade",
+      "titulo": "6. Volumetria e Sazonalidade",
+      "perguntas": [
+        {
+          "id": "escopo_empresas",
+          "label": "As informações correspondem a todas as empresas do grupo ou é necessário aplicar um fator multiplicador por N empresas?",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["Todas as empresas", "Fator multiplicador por N empresas"]
+        },
+        {
+          "id": "numero_empresas",
+          "label": "Se houver fator N, qual o número de empresas?",
+          "tipo": "number",
+          "obrigatorio": false,
+          "placeholder": "Ex.: 12"
+        },
+        {
+          "id": "sobrecarga_horario",
+          "label": "Existe sobrecarga em horários específicos do dia? (pico de transações)",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["Sim", "Não"]
+        },
+        {
+          "id": "horario_pico",
+          "label": "Se sim, qual o horário de pico e volume estimado nesse período?",
+          "tipo": "textarea",
+          "obrigatorio": false,
+          "placeholder": "Ex.: 08h às 10h — 3x o volume normal. Temporada de chuva: período da tarde"
+        },
+        {
+          "id": "sazonalidade_anual",
+          "label": "Existe sazonalidade anual? (ex.: fechamento de ciclo, campanhas)",
+          "tipo": "radio",
+          "obrigatorio": false,
+          "opcoes": ["Sim", "Não"]
+        },
+        {
+          "id": "base_calculo_pico",
+          "label": "Se possível, utilize o maior cenário esperado como base de cálculo e informe que é o pico",
+          "tipo": "textarea",
+          "obrigatorio": false,
+          "placeholder": "Descreva o pior cenário estimado de volume"
+        }
+      ]
+    },
+    {
+      "id": "requisitos_nao_funcionais",
+      "titulo": "7. Requisitos Não Funcionais",
+      "perguntas": [
+        {
+          "id": "latencia_maxima",
+          "label": "Qual a latência máxima tolerável ponta a ponta?",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["< 1 segundo", "Até 5 segundos", "Até 1 minuto", "Até 5 minutos", "Batch diário", "Outro"]
+        },
+        {
+          "id": "retencao_minima",
+          "label": "Qual a retenção mínima necessária das mensagens nos tópicos?",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["7 dias", "15 dias", "30 dias", "60 dias", "90 dias", "Outro"]
+        },
+        {
+          "id": "dados_sensiveis",
+          "label": "Os dados são sensíveis / precisam de criptografia ou mascaramento?",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["Sim", "Não"]
+        },
+        {
+          "id": "necessidade_reprocessamento",
+          "label": "Existe necessidade de reprocessamento de mensagens (DLQ / replay)?",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["Sim", "Não"]
+        },
+        {
+          "id": "ordenacao_garantida",
+          "label": "Há dependência de ordenação garantida das mensagens?",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["Sim", "Não"]
+        }
+      ]
+    },
+    {
+      "id": "observacoes",
+      "titulo": "8. Observações Adicionais",
+      "perguntas": [
+        {
+          "id": "restricoes_tecnicas",
+          "label": "Alguma restrição técnica relevante (firewall, versão de banco, driver, certificado)?",
+          "tipo": "textarea",
+          "obrigatorio": false,
+          "placeholder": "Descreva restrições técnicas relevantes"
+        },
+        {
+          "id": "integracoes_referencia",
+          "label": "Há integrações similares já existentes no barramento que podem servir de referência?",
+          "tipo": "radio",
+          "obrigatorio": false,
+          "opcoes": ["Sim", "Não"]
+        },
+        {
+          "id": "observacoes_livres",
+          "label": "Observações livres",
+          "tipo": "textarea",
+          "obrigatorio": false,
+          "placeholder": "Qualquer informação adicional relevante"
+        }
+      ]
+    }
+  ]
+}
