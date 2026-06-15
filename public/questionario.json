@@ -69,10 +69,10 @@
       "perguntas": [
         {
           "id": "volumetria_tabelas",
-          "label": "Para cada tabela, qual a volumetria diária esperada de movimentação em Bytes? (Bytes, KB, MB, GB ou TB)",
+          "label": "Para cada tabela, detalhe a volumetria diária esperada de movimentação em Bytes, especificando INSERT, UPDATE, DELETE e total (Bytes, KB, MB, GB ou TB)",
           "tipo": "textarea",
           "obrigatorio": true,
-          "placeholder": "Detalhe por tabela, incluindo:\n- Nome da tabela\n- Volumetria em Bytes (ex: 30 MB/dia, 5 GB/dia, 100 KB/dia)\n\nExemplo:\ntabela_clientes: 150 MB/dia\ntabela_pedidos: 2.5 GB/dia\ntabela_historico: 500 MB/dia"
+          "placeholder": "Detalhe CADA TABELA com:\n- Nome da tabela\n- Inserções (INSERT) - quantidade e volume\n- Atualizações (UPDATE) - quantidade e volume\n- Deleções (DELETE) - quantidade e volume\n- Volume TOTAL de movimentação por dia\n\nExemplo:\n\ntabela_clientes:\n  - INSERT: 500 registros/dia = 50 MB/dia\n  - UPDATE: 200 registros/dia = 20 MB/dia\n  - DELETE: 10 registros/dia = 1 MB/dia\n  - TOTAL: 71 MB/dia\n\ntabela_pedidos:\n  - INSERT: 5.000 registros/dia = 2 GB/dia\n  - UPDATE: 1.000 registros/dia = 400 MB/dia\n  - DELETE: 100 registros/dia = 50 MB/dia\n  - TOTAL: 2.45 GB/dia\n\ntabela_historico:\n  - INSERT: 10.000 registros/dia = 500 MB/dia\n  - UPDATE: 0 registros/dia = 0 MB/dia\n  - DELETE: 0 registros/dia = 0 MB/dia\n  - TOTAL: 500 MB/dia"
         }
       ]
     },
