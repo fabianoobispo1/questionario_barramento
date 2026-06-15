@@ -65,42 +65,14 @@
     },
     {
       "id": "origens_banco",
-      "titulo": "2.2 Para origens em Banco de Dados (tabelas/views)",
+      "titulo": "2.2 Para origens em Banco de Dados (tabelas)",
       "perguntas": [
         {
-          "id": "possui_pk",
-          "label": "As tabelas possuem Primary Key (PK)?",
-          "tipo": "radio",
-          "obrigatorio": true,
-          "opcoes": ["Sim", "Não", "Algumas sim, outras não"]
-        },
-        {
-          "id": "possui_unique_index",
-          "label": "Se não há PK, existe Alternate Unique Index?",
-          "tipo": "radio",
-          "obrigatorio": false,
-          "opcoes": ["Sim", "Não", "Não aplicável"]
-        },
-        {
-          "id": "campo_timestamp",
-          "label": "Se não há PK nem Unique Index, existe campo equivalente + Timestamp de atualização?",
-          "tipo": "radio",
-          "obrigatorio": false,
-          "opcoes": ["Sim", "Não", "Não aplicável"]
-        },
-        {
-          "id": "view_pk_timestamp",
-          "label": "As views possuem PK (ou equivalente) + Timestamp?",
-          "tipo": "radio",
-          "obrigatorio": false,
-          "opcoes": ["Sim", "Não", "Não aplicável"]
-        },
-        {
           "id": "volumetria_tabelas",
-          "label": "Para cada tabela/view, qual a volumetria diária esperada de movimentação? (em Bytes: Kb, Mb ou Gb)",
+          "label": "Para cada tabela, qual a volumetria diária esperada de movimentação em Bytes? (Bytes, KB, MB, GB ou TB)",
           "tipo": "textarea",
           "obrigatorio": true,
-          "placeholder": "Ex.: tabela_a: 30 MB/dia, tabela_b: 5 GB/dia"
+          "placeholder": "Detalhe por tabela, incluindo:\n- Nome da tabela\n- Volumetria em Bytes (ex: 30 MB/dia, 5 GB/dia, 100 KB/dia)\n\nExemplo:\ntabela_clientes: 150 MB/dia\ntabela_pedidos: 2.5 GB/dia\ntabela_historico: 500 MB/dia"
         }
       ]
     },
