@@ -134,7 +134,6 @@ export default function Home() {
     lines.push('- [ ] Lista de tabelas/views com volumetria diária em **Bytes**');
     lines.push('- [ ] Presença (ou ausência) de PK / Unique Index em cada tabela');
     lines.push('- [ ] Indicação clara se há transformação e onde ela ocorre');
-    lines.push('- [ ] Volume de carga inicial (se houver)');
     lines.push('- [ ] Fator multiplicador por empresas');
     lines.push('- [ ] Horários de pico identificados');
     lines.push('');

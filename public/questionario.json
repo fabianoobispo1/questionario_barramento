@@ -332,42 +332,8 @@
       ]
     },
     {
-      "id": "carga_inicial",
-      "titulo": "5. Carga Inicial (Dados Históricos)",
-      "perguntas": [
-        {
-          "id": "necessidade_carga_inicial",
-          "label": "Existe necessidade de carga inicial com dados históricos?",
-          "tipo": "radio",
-          "obrigatorio": true,
-          "opcoes": ["Sim", "Não"]
-        },
-        {
-          "id": "volume_carga_inicial",
-          "label": "Se sim, qual o volume total estimado? (em Bytes: Mb, Gb, Tb)",
-          "tipo": "text",
-          "obrigatorio": false,
-          "placeholder": "Ex.: 500 GB"
-        },
-        {
-          "id": "periodo_historico",
-          "label": "Qual o período histórico a ser carregado?",
-          "tipo": "text",
-          "obrigatorio": false,
-          "placeholder": "Ex.: últimos 2 anos"
-        },
-        {
-          "id": "janela_carga",
-          "label": "Há janela de tempo disponível para a carga inicial? (ex.: fora do horário de pico)",
-          "tipo": "text",
-          "obrigatorio": false,
-          "placeholder": "Ex.: madrugada das 00h às 05h"
-        }
-      ]
-    },
-    {
       "id": "volumetria_sazonalidade",
-      "titulo": "6. Volumetria e Sazonalidade",
+      "titulo": "5. Volumetria e Sazonalidade",
       "perguntas": [
         {
           "id": "escopo_empresas",
