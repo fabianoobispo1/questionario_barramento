@@ -3,8 +3,8 @@ import { Toaster } from "sonner";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Questionário de Onboarding | Barramento de Integração",
-  description: "Formulário de onboarding para integração com o barramento Kafka da Energisa",
+  title: "Central de Questionários",
+  description: "Plataforma para preenchimento e exportação de múltiplos questionários.",
 };
 
 export default function RootLayout({

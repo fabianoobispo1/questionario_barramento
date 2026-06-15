@@ -30,11 +30,8 @@ export default function Home() {
       <main className="max-w-4xl mx-auto px-4 py-10">
         <header className="mb-8">
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-800">
-            Selecione o questionário
+            Central de Questionários
           </h1>
-          <p className="text-slate-600 mt-2">
-            A lista abaixo é carregada automaticamente com todos os arquivos .json da pasta public.
-          </p>
         </header>
 
         {carregando && (
