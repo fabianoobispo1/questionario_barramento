@@ -33,13 +33,6 @@
           "tipo": "date",
           "obrigatorio": true,
           "placeholder": ""
-        },
-        {
-          "id": "ambientes",
-          "label": "Ambientes necessários",
-          "tipo": "checkbox-group",
-          "obrigatorio": true,
-          "opcoes": ["DEV", "HML", "PRD"]
         }
       ]
     },
