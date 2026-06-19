@@ -45,20 +45,20 @@
           "label": "Qual(is) o(s) tipo(s) de origem?",
           "tipo": "checkbox-group",
           "obrigatorio": true,
-          "opcoes": ["Tabela", "View", "API", "Tópicos Kafka", "Outro"]
+          "opcoes": ["Tabela", "API", "Tópicos Kafka", "Outro"]
         },
         {
           "id": "bancos_envolvidos",
-          "label": "Quantos bancos de dados estão envolvidos? Liste-os (nome, tipo: Oracle/SQL Server/outro)",
+          "label": "Se origem em banco: quantos bancos de dados estão envolvidos? Liste-os (nome, tipo: Oracle/SQL Server/outro)",
           "tipo": "textarea",
-          "obrigatorio": true,
+          "obrigatorio": false,
           "placeholder": "Ex.: 2 bancos — Oracle (producao_db), SQL Server (legado_db)"
         },
         {
-          "id": "tabelas_views",
-          "label": "Quantas tabelas/views serão integradas? Liste-as",
+          "id": "tabelas_integradas",
+          "label": "Se origem em banco: quantas tabelas serão integradas? Liste-as",
           "tipo": "textarea",
-          "obrigatorio": true,
+          "obrigatorio": false,
           "placeholder": "Ex.: ntle_clien_itrpc_frnto_muncp\ngold_adlcorp_hmg.dm_local"
         }
       ]
@@ -352,6 +352,69 @@
       ]
     },
     {
+      "id": "precificacao",
+      "titulo": "6. Precificação e Operação",
+      "descricao": "As respostas desta seção são usadas para estimativa de custo de implantação e operação recorrente.",
+      "perguntas": [
+        {
+          "id": "modelo_cobranca",
+          "label": "Qual modelo de cobrança é mais adequado para este projeto?",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["Setup único + mensal", "Somente mensal", "Por volumetria", "A definir com arquitetura"]
+        },
+        {
+          "id": "criticidade_servico",
+          "label": "Qual a criticidade do serviço para o negócio?",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["Baixa", "Média", "Alta", "Crítica"]
+        },
+        {
+          "id": "sla_suporte",
+          "label": "Qual nível de suporte/SLA será necessário?",
+          "tipo": "radio",
+          "obrigatorio": true,
+          "opcoes": ["Horário comercial (8x5)", "Estendido (12x6)", "24x7", "A definir"]
+        },
+        {
+          "id": "ambientes_escopo",
+          "label": "Quais ambientes fazem parte do escopo desta integração?",
+          "tipo": "checkbox-group",
+          "obrigatorio": true,
+          "opcoes": ["DEV", "HML", "PRD", "DR"]
+        },
+        {
+          "id": "janela_implantacao",
+          "label": "Existe janela restrita de implantação ou indisponibilidade permitida?",
+          "tipo": "textarea",
+          "obrigatorio": false,
+          "placeholder": "Ex.: somente domingos entre 00h e 04h"
+        },
+        {
+          "id": "requisitos_compliance",
+          "label": "Há requisitos de segurança/compliance que impactam custo?",
+          "tipo": "checkbox-group",
+          "obrigatorio": false,
+          "opcoes": ["LGPD", "Criptografia em trânsito", "Criptografia em repouso", "Mascaramento de dados", "Auditoria", "Outro"]
+        },
+        {
+          "id": "dependencias_externas",
+          "label": "Há dependências externas (terceiros, fornecedores, outras áreas) que possam impactar prazo/custo?",
+          "tipo": "textarea",
+          "obrigatorio": false,
+          "placeholder": "Descreva dependências e riscos conhecidos"
+        },
+        {
+          "id": "premissas_precificacao",
+          "label": "Premissas para precificação (o que está dentro e fora do escopo)",
+          "tipo": "textarea",
+          "obrigatorio": true,
+          "placeholder": "Ex.: inclui criação de 2 tópicos e observabilidade; não inclui desenvolvimento de sistema consumidor"
+        }
+      ]
+    },
+    {
       "id": "observacoes",
       "titulo": "7. Observações Adicionais",
       "perguntas": [
@@ -361,13 +424,6 @@
           "tipo": "textarea",
           "obrigatorio": false,
           "placeholder": "Descreva restrições técnicas relevantes"
-        },
-        {
-          "id": "integracoes_referencia",
-          "label": "Há integrações similares já existentes no barramento que podem servir de referência?",
-          "tipo": "radio",
-          "obrigatorio": false,
-          "opcoes": ["Sim", "Não"]
         },
         {
           "id": "observacoes_livres",
